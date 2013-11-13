@@ -73,7 +73,7 @@ module BigintPk
   def self.update_key table_name, key_name, is_primary_key
     c = ActiveRecord::Base.connection
     case c.adapter_name
-    when 'PostgreSQL'
+    when 'PostgreSQL', 'PostGIS'
       c.execute %Q{
         ALTER TABLE #{c.quote_table_name table_name}
         ALTER COLUMN #{c.quote_column_name key_name}
